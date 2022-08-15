@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import { Preview } from './components/Preview'
+import './App.css'
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <Inputs />
-      </div>)
-  }
-}
-
-
-class Inputs extends Component {
   constructor() {
     super()
     this.state = {
@@ -92,23 +83,47 @@ class Inputs extends Component {
       }
     })
   }
-
-
   render() {
     return (
-      <div>
-        <input placeholder="First name" onChange={this.handleChangeFirstName}></input>
-        <input placeholder="Last name" onChange={this.handleChangeLastName}></input>
-        <input placeholder="Date of birth" type='date' onChange={this.handleChangeBirthDate}></input>
-        <input placeholder="Email" type='email' onChange={this.handleChangeEmail}></input>
-        <input placeholder="Phone number" type='number' onChange={this.handleChangeNumber}></input>
-        <Preview
-          firstName={this.state.personalData.firstName}
-          lastName={this.state.personalData.lastName}
-          birthDate={this.state.personalData.birthDate}
-          email={this.state.personalData.email}
-          phone={this.state.personalData.phoneNumber} />
+      <div className="app">
+        <Header/>
+        <div className="content">
+          <Inputs
+            firstName={this.handleChangeFirstName}
+            lastName={this.handleChangeLastName}
+            birthDate={this.handleChangeBirthDate}
+            email={this.handleChangeEmail}
+            number={this.handleChangeNumber}
+          />
+          <Preview
+            firstName={this.state.personalData.firstName}
+            lastName={this.state.personalData.lastName}
+            birthDate={this.state.personalData.birthDate}
+            email={this.state.personalData.email}
+            phone={this.state.personalData.phoneNumber} />
+        </div>
       </div>)
+  }
+}
+
+
+class Inputs extends Component {
+  render() {
+    return (
+      <div className="inputs">
+        <input placeholder="First name" onChange={this.props.firstName}></input>
+        <input placeholder="Last name" onChange={this.props.lastName}></input>
+        <input placeholder="Date of birth" type='date' onChange={this.props.birthDate}></input>
+        <input placeholder="Email" type='email' onChange={this.props.email}></input>
+        <input placeholder="Phone number" type='number' onChange={this.props.number}></input>
+
+      </div>)
+  }
+}
+
+class Header extends Component {
+  render() {
+    return <div className="header"><h1>CV-Creator</h1></div>
   }
 }
 
