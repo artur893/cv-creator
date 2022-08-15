@@ -20,7 +20,7 @@ class Inputs extends Component {
         lastName: "Escobar",
         birthDate: "1949-12-01",
         email: "pablo@gmail.com",
-        phoneNumber: "601 101 997"
+        phoneNumber: "601101997"
       },
       education: {},
       experience: {}
@@ -39,7 +39,7 @@ class Inputs extends Component {
         firstName: e.target.value,
         lastName: this.state.personalData.lastName,
         birthDate: this.state.personalData.birthDate,
-        email: this.state.personalData.birthDate,
+        email: this.state.personalData.email,
         phoneNumber: this.state.personalData.phoneNumber
       }
     })
@@ -51,7 +51,7 @@ class Inputs extends Component {
         firstName: this.state.personalData.firstName,
         lastName: e.target.value,
         birthDate: this.state.personalData.birthDate,
-        email: this.state.personalData.birthDate,
+        email: this.state.personalData.email,
         phoneNumber: this.state.personalData.phoneNumber
       }
     })
@@ -59,19 +59,37 @@ class Inputs extends Component {
 
   handleChangeBirthDate(e) {
     this.setState({
-      birthDate: e.target.value
+      personalData: {
+        firstName: this.state.personalData.firstName,
+        lastName: this.state.personalData.lastName,
+        birthDate: e.target.value,
+        email: this.state.personalData.email,
+        phoneNumber: this.state.personalData.phoneNumber
+      }
     })
   }
 
   handleChangeEmail(e) {
     this.setState({
-      email: e.target.value
+      personalData: {
+        firstName: this.state.personalData.firstName,
+        lastName: this.state.personalData.lastName,
+        birthDate: this.state.personalData.birthDate,
+        email: e.target.value,
+        phoneNumber: this.state.personalData.phoneNumber
+      }
     })
   }
 
   handleChangeNumber(e) {
     this.setState({
-      phoneNumber: e.target.value
+      personalData: {
+        firstName: this.state.personalData.firstName,
+        lastName: this.state.personalData.lastName,
+        birthDate: this.state.personalData.birthDate,
+        email: this.state.personalData.email,
+        phoneNumber: e.target.value
+      }
     })
   }
 
@@ -87,7 +105,9 @@ class Inputs extends Component {
         <Preview
           firstName={this.state.personalData.firstName}
           lastName={this.state.personalData.lastName}
-          birthDate={this.state.personalData.birthDate} />
+          birthDate={this.state.personalData.birthDate}
+          email={this.state.personalData.email}
+          phone={this.state.personalData.phoneNumber} />
       </div>)
   }
 }
